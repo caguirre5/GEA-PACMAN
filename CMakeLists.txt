@@ -8,8 +8,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 
-set(FMOD_DIR "/home/cristian/Downloads/fmodstudioapi20225linux/api/core")
-
 file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS
     "${PROJECT_SOURCE_DIR}/src/*.cpp"
 )
@@ -26,7 +24,6 @@ find_package(SDL2 REQUIRED)
 target_include_directories(game  
   PUBLIC src
   PUBLIC ${SDL2_INCLUDE_DIRS}
-  PUBLIC ${FMOD_DIR}/inc
 )
 
 set(SDL2_IMAGE_LIBRARIES "/usr/lib/x86_64-linux-gnu/libSDL2_image.so")
@@ -34,7 +31,6 @@ set(SDL2_IMAGE_LIBRARIES "/usr/lib/x86_64-linux-gnu/libSDL2_image.so")
 target_link_libraries(game
   ${SDL2_LIBRARIES}
   ${SDL2_IMAGE_LIBRARIES}
-  ${FMOD_DIR}/lib/x86_64/libfmod.so
 )
 
 add_custom_command(TARGET game POST_BUILD
